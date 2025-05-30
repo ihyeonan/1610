@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!--
+  This HTML file contains a single-file infographic summarizing a student research report on the ethical awareness and educational needs regarding generative AI among 1st-year students at Mirim Meister High School.
+  It includes all CSS and JavaScript directly within the file, without external links.
+  Visualizations are implemented using Chart.js for data charts and pure HTML/CSS for diagrams.
+-->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성형 AI 윤리의식 및 교육 필요성 실태 조사 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        /* Custom CSS */
+        body {
+            font-family: 'Noto Sans KR', sans-serif; /* Using Noto Sans KR as a common Korean font */
+            background-color: #F4F7F9; /* Light Background */
+            color: #263238; /* Dark Text */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .card {
+            background-color: #FFFFFF; /* Light Background for cards */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            color: #2A62B6; /* Primary Blue */
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .subsection-title {
+            color: #2A62B6; /* Primary Blue */
+            font-size: 1.75rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1rem;
+        }
+        .text-primary-blue {
+            color: #2A62B6;
+        }
+        .bg-primary-blue {
+            background-color: #2A62B6;
+        }
+        .bg-secondary-teal {
+            background-color: #4ECDC4;
+        }
+        .bg-supporting-light-blue {
+            background-color: #E0F2FE;
+        }
+        .border-accent-grey {
+            border-color: #A9A9A9;
+        }
+        .chart-container {
+            position: relative;
+            height: 288px; /* h-72 */
+            max-height: 350px; /* max-h-[350px] */
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container {
+                height: 320px; /* md:h-80 */
+                max-height: 450px; /* md:max-h-[450px] */
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .chart-container {
+                height: 384px; /* lg:h-96 */
+            }
+        }
+        .grid-col-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #2A62B6;
+            border-radius: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0.35rem;
+            top: 1.25rem;
+            bottom: -0.5rem;
+            width: 2px;
+            background-color: #E0F2FE;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .table-custom th, .table-custom td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #E0F2FE;
+            text-align: left;
+        }
+        .table-custom th {
+            background-color: #E0F2FE;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container py-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-primary-blue mb-4">
+                생성형 AI 윤리의식 및 교육 필요성 실태 조사 보고서
+            </h1>
+            <p class="text-lg text-gray-700 mb-6">
+                미림마이스터고등학교 1학년 6반 학생들의 생성형 AI 윤리의식 수준과 교육의 필요성에 대한 심층 조사 결과
+            </p>
+            <div class="text-md text-gray-600">
+                <p><strong>작성일:</strong> 2025년 5월</p>
+                <p><strong>조사 그룹:</strong> 1학년 6반 2조</p>
+                <p><strong>참여자:</strong> 권민경 (1602), 변지민 (1608), 송지영 (1609), 안이현 (1610)</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2 class="section-title">1. 조사 동기와 목적</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="subsection-title">조사 동기</h3>
+                        <p class="text-gray-700">
+                            미림마이스터고등학교 뉴미디어디자인과 1학년 6반 학생들이 수업시간마다 다양한 방식으로 생성형 AI를 사용하고 있었다. 이에 1학년 6반이 생성형 AI에 대해 얼마나 올바른 윤리의식을 갖고 있는지 확실하지 않아 1학년 6반의 생성형 AI 윤리의식과 교육의 필요성에 대해 알고자 했다.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="subsection-title">조사 목적</h3>
+                        <p class="text-gray-700">
+                            미림마이스터고등학교 뉴미디어디자인과 1학년 6반 학생들에게 생성형 AI를 사용할 때 필요한 윤리 의식과 올바른 사용법을 제공하여 1학년 6반의 올바른 생성형 AI 사용을 돕기 위해 이 보고서를 작성했다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="section-title">2. 조사 계획</h2>
+                <div class="mb-6">
+                    <p class="text-lg text-gray-700 mb-2"><strong>조사 기간:</strong> 2025년 5월 16일 ~ 5월 17일</p>
+                    <p class="text-lg text-gray-700 mb-2"><strong>조사 대상:</strong> 미림마이스터고 1학년 6반 전체 학생</p>
+                    <p class="text-lg text-gray-700"><strong>조사 방법:</strong> 설문지, 인터뷰</p>
+                </div>
+
+                <h3 class="subsection-title">조사 방법 상세</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg table-custom">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 bg-supporting-light-blue rounded-tl-lg">조사 방법</th>
+                                <th class="py-3 px-4 bg-supporting-light-blue">조사 대상</th>
+                                <th class="py-3 px-4 bg-supporting-light-blue rounded-tr-lg">조사 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-3 px-4">설문지</td>
+                                <td class="py-3 px-4">1학년 6반 전체 학생</td>
+                                <td class="py-3 px-4">생성형 AI의 윤리적 문제에 대해 조사했다.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">인터뷰</td>
+                                <td class="py-3 px-4">문연경, 최예린</td>
+                                <td class="py-3 px-4">생성형 AI를 사용하면서 겪을 수 있는 가장 큰 윤리적 문제에 대해 인터뷰했다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="section-title">3. 조사 결과</h2>
+                <div class="mb-8">
+                    <h3 class="subsection-title">요약</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li><strong>설문조사:</strong> 생성형 AI에게 도움을 많이 받지만, 항상 AI의 윤리적 문제에 대해 고민했다.</li>
+                        <li><strong>인터뷰:</strong> 생성형 AI의 출처, 표절, 남용에 대한 문제의 심각성을 크게 느끼고 이것을 교육을 통해 해결하고자 했다.</li>
+                    </ul>
+                </div>
+
+                <h3 class="subsection-title">설문조사 상세 결과</h3>
+
+                <div class="mb-8 p-6 bg-supporting-light-blue rounded-lg">
+                    <h4 class="text-xl font-semibold text-primary-blue mb-4">
+                        설문 문항 1: AI 생성 내용 무단 사용에 대한 윤리적 고민 여부
+                    </h4>
+                    <p class="text-gray-700 mb-4">
+                        학교 과제나 학습을 위해 생성형 AI를 사용할 때, AI가 생성한 내용을 자신의 생각이나 노력 없이 그대로 사용하는 것에 대해 윤리적으로 '이래도 되나?'라는 고민을 해본 적이 있는지 조사했다.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="surveyQ1Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4">
+                        설문 결과, 1학년 6반 학생들은 AI가 생성한 내용을 자신의 생각이나 노력 없이 사용하는 것에 대해 윤리적으로 고민해본 사람이 많다는 것을 알 수 있었다.
+                    </p>
+                </div>
+
+                <div class="mb-8 p-6 bg-supporting-light-blue rounded-lg">
+                    <h4 class="text-xl font-semibold text-primary-blue mb-4">
+                        설문 문항 2: AI 정보의 사실 여부 확인 여부
+                    </h4>
+                    <p class="text-gray-700 mb-4">
+                        생성형 AI를 사용할 때, AI가 알려준 정보가 사실인지 직접 다른 자료를 찾아보거나 확인하는 편인지 조사했다.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="surveyQ2Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4">
+                        설문 결과, 1학년 6반 학생들은 AI가 제공한 정보가 사실인지 다른 자료를 조사하는 등의 방법으로 확인해보는 사람이 많다는 것을 알 수 있었다.
+                    </p>
+                </div>
+
+                <div class="mb-8 p-6 bg-supporting-light-blue rounded-lg">
+                    <h4 class="text-xl font-semibold text-primary-blue mb-4">
+                        설문 문항 3: 생성형 AI 사용 시 가장 고민해 본 윤리적 문제 (다수 선택)
+                    </h4>
+                    <p class="text-gray-700 mb-4">
+                        생성형 AI(예: ChatGPT, Gemini 등)를 사용하면서 가장 고민해 본 적 있는 윤리적 문제가 무엇인지 다수 선택으로 조사했다.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="surveyQ3Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4">
+                        이 문항을 통해 1학년 6반 학생들은 AI가 잘못된 정보나 편향된 내용을 만들 수 있다는 문제에 대해 가장 많이 고민해 봤다는 것을 알 수 있었다.
+                    </p>
+                </div>
+
+                <h3 class="subsection-title mb-6">인터뷰 결과</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-accent-grey">
+                        <h4 class="text-xl font-semibold text-secondary-teal mb-3">문연경 학생</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>생성형 AI의 윤리적 사용을 위해 도덕성과 책임감을 갖춘 윤리 교육의 필요성을 강조했다.</li>
+                            <li>타인의 AI 사용 방식을 통해 윤리적 문제를 인식하고 이를 개선하려는 태도의 중요성을 언급했다.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-accent-grey">
+                        <h4 class="text-xl font-semibold text-secondary-teal mb-3">최예린 학생</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>AI에 과도하게 의존할 경우 자기 능력에 대한 왜곡이 발생할 수 있다는 점을 지적했다.</li>
+                            <li>AI의 정보를 맹신하지 않고, 잘못된 정보 및 정보 매칭 오류의 사례를 바탕으로 한 교육의 필요성을 강조했다.</li>
+                            <li>AI 사용 전반에 걸쳐 자기 점검과 자율적 통제도 중요하다고 말했다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="section-title">4. 결론 및 제언</h2>
+                <div class="mb-8">
+                    <h3 class="subsection-title">주요 결론</h3>
+                    <p class="text-gray-700 mb-4">
+                        이번 인터뷰 조사를 통해, 미림마이스터고등학교 1학년 6반 학생들이 생성형 AI를 사용할 때 겪는 윤리적 고민과 인식 수준을 구체적으로 파악할 수 있었다. 설문과 인터뷰 조사를 통해 1학년 6반 학생들은 다음과 같은 문제의 심각성을 크게 느끼고 있었다.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>정보 검증 없이 AI 결과를 수용하는 행동에 대한 윤리적 문제 (58.8%)</li>
+                        <li>잘못된 정보, 편향 (52.9%)과 출처, 표절 (35.3%)에 대한 윤리적 문제</li>
+                        <li>윤리 의식 향상을 위한 사례 기반 교육에 대한 강한 욕구</li>
+                    </ul>
+                </div>
+
+                <h3 class="subsection-title">학교 및 학생회에 대한 제언</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-accent-grey">
+                        <h4 class="text-xl font-semibold text-secondary-teal mb-3">학교 차원의 교육 활동</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><strong>'AI 윤리 워크숍' 분기별 1회 실시:</strong> 검증 절차와 저작권 사례 실습을 포함한다.</li>
+                            <li><strong>과목별 과제 지침 'AI 사용, 검증 보고서' 제출 의무화:</strong> 행위-의식 간 간극을 줄이는 데 기여한다.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-accent-grey">
+                        <h4 class="text-xl font-semibold text-secondary-teal mb-3">학생회 차원의 자율 감시 체계</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>오류, 표절 사례 모니터링 및 분기별 보고서 발간을 통해 자율 감시 체계를 구축한다.</li>
+                            <li>2025년 2학기 종료 시점까지 수업 활동이나 과제 등에서 생성형 AI 표절 사고가 0건에 달하도록 노력할 것을 다짐한다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="card">
+            <h2 class="section-title">5. 참고자료</h2>
+            <p class="text-gray-700">
+                본 인포그래픽은 미림마이스터고등학교 1학년 6반 2조의 "1-6 학생들이 가지고 있는 생성형 AI의 윤리의식과 교육의 필요성 실태 조사 보고서"를 바탕으로 제작되었다.
+            </p>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm mt-12">
+            <p>&copy; 2025 미림마이스터고등학교 1학년 6반 2조. 모든 권리 보유.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Register the datalabels plugin globally
+        Chart.register(ChartDataLabels);
+
+        // Function to wrap labels for Chart.js
+        function wrapLabel(label, maxLen = 16) {
+            if (typeof label !== 'string') {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLen && currentLine !== '') {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Data for Chart.js charts
+        const surveyData = {
+            q1: {
+                labels: ['매우 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
+                counts: [1, 1, 0, 10, 5],
+                percentages: [5.9, 5.9, 0, 58.8, 29.4]
+            },
+            q2: {
+                // Assuming the last '그렇지 않다' (35.3%) is '매우 그렇다' based on typical survey scales and context.
+                labels: ['매우 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
+                counts: [2, 3, 5, 1, 6],
+                percentages: [11.8, 17.6, 29.4, 5.9, 35.3]
+            },
+            q3: {
+                labels: [
+                    'AI가 만든 내용이 출처 문제',
+                    'AI가 타인의 저작물을 베끼는 것 같은 표절 문제',
+                    'AI가 잘못된 정보나 편향된 내용을 만들 수 있다는 문제',
+                    '너무 쉽게 아이디어를 생각하거나 그림을 그림'
+                ],
+                counts: [6, 6, 9, 1],
+                percentages: [35.3, 35.3, 52.9, 5.9] // Note: percentages are based on total respondents (17), not sum of choices (22)
+            }
+        };
+
+        // Common Chart.js options
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: 'Noto Sans KR'
+                        },
+                        // Wrap legend labels
+                        generateLabels: function(chart) {
+                            const originalLabels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            return originalLabels.map(label => {
+                                return {
+                                    ...label,
+                                    text: wrapLabel(label.text).join('\n')
+                                };
+                            });
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed + '명';
+                            }
+                            if (context.dataset.percentages && context.dataIndex !== undefined) {
+                                label += ` (${context.dataset.percentages[context.dataIndex]}%)`;
+                            }
+                            return label;
+                        },
+                        title: function(context) {
+                            // Wrap tooltip title for Q3 bar chart
+                            if (context[0].dataset.label === '응답수') {
+                                return wrapLabel(context[0].label).join('\n');
+                            }
+                            return context[0].label;
+                        }
+                    },
+                    bodyFont: {
+                        size: 14,
+                        family: 'Noto Sans KR'
+                    },
+                    titleFont: {
+                        size: 14,
+                        family: 'Noto Sans KR'
+                    }
+                },
+                datalabels: {
+                    formatter: (value, ctx) => {
+                        const percentage = ctx.dataset.percentages[ctx.dataIndex];
+                        return percentage > 0 ? `${percentage}%` : ''; // Only show if percentage > 0
+                    },
+                    color: '#fff',
+                    font: {
+                        weight: 'bold',
+                        size: 14,
+                        family: 'Noto Sans KR'
+                    },
+                    textShadowBlur: 4,
+                    textShadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        };
+
+        // Chart colors
+        const chartColors = [
+            '#2A62B6', '#4ECDC4', '#A9A9A9', '#E0F2FE', '#263238',
+            '#6A5ACD', '#FFD700', '#FF6347', '#3CB371', '#87CEEB'
+        ];
+
+        // Initialize Chart 1: Survey Q1 - Ethical Concern (Pie Chart)
+        const ctx1 = document.getElementById('surveyQ1Chart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: surveyData.q1.labels.map(label => wrapLabel(label)),
+                datasets: [{
+                    data: surveyData.q1.counts,
+                    backgroundColor: chartColors.slice(0, surveyData.q1.labels.length),
+                    percentages: surveyData.q1.percentages,
+                    borderWidth: 1,
+                    borderColor: '#FFFFFF'
+                }]
+            },
+            options: {
+                ...commonChartOptions
+            }
+        });
+
+        // Initialize Chart 2: Survey Q2 - Verifying AI Info (Pie Chart)
+        const ctx2 = document.getElementById('surveyQ2Chart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: surveyData.q2.labels.map(label => wrapLabel(label)),
+                datasets: [{
+                    data: surveyData.q2.counts,
+                    backgroundColor: chartColors.slice(0, surveyData.q2.labels.length),
+                    percentages: surveyData.q2.percentages,
+                    borderWidth: 1,
+                    borderColor: '#FFFFFF'
+                }]
+            },
+            options: {
+                ...commonChartOptions
+            }
+        });
+
+        // Initialize Chart 3: Survey Q3 - Most Concerning Ethical Issues (Bar Chart)
+        const ctx3 = document.getElementById('surveyQ3Chart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: surveyData.q3.labels.map(label => wrapLabel(label)),
+                datasets: [{
+                    label: '응답수',
+                    data: surveyData.q3.counts,
+                    backgroundColor: chartColors[0], // Primary Blue for bars
+                    borderColor: chartColors[0],
+                    borderWidth: 1,
+                    percentages: surveyData.q3.percentages
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '응답수 (명)',
+                            font: {
+                                size: 16,
+                                family: 'Noto Sans KR'
+                            },
+                            color: '#263238'
+                        },
+                        ticks: {
+                            font: {
+                                size: 12,
+                                family: 'Noto Sans KR'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 12,
+                                family: 'Noto Sans KR'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        offset: 4,
+                        formatter: (value, ctx) => {
+                            const percentage = ctx.dataset.percentages[ctx.dataIndex];
+                            return `${value}명 (${percentage}%)`;
+                        },
+                        color: '#263238', // Dark text for datalabels on bars
+                        font: {
+                            weight: 'bold',
+                            size: 12,
+                            family: 'Noto Sans KR'
+                        },
+                        textShadowBlur: 0, // No shadow for bar labels
+                        textShadowColor: 'transparent'
+                    }
+                }
+            }
+        });
+    </script>
+    <!--
+      이 HTML 파일은 미림마이스터고등학교 1학년 6반 학생들의 생성형 AI 윤리의식 및 교육 필요성 실태 조사 보고서를 바탕으로 제작된 인포그래픽입니다.
+      모든 내용은 단일 HTML 파일 내에 포함되어 있으며, 외부 리소스 링크는 사용하지 않았습니다.
+      차트는 Chart.js 라이브러리를 활용하였고, 그 외의 시각화는 순수 HTML/CSS로 구현했습니다.
+    -->
