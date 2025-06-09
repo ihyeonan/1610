@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+      <!DOCTYPE html>
 <!--
   This HTML file contains a single-file infographic summarizing a student research report on the ethical awareness and educational needs regarding generative AI among 1st-year students at Mirim Meister High School.
   It includes all CSS and JavaScript directly within the file, without external links.
@@ -9,9 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>생성형 AI 윤리의식 및 교육 필요성 실태 조사 인포그래픽</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Pretendard -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Datalabels Plugin CDN (for displaying percentages on pie charts) -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <style>
         /* Custom CSS */
@@ -124,11 +129,27 @@
             background-color: #E0F2FE;
             font-weight: bold;
         }
+        .image-placeholder {
+            width: 100%;
+            height: 200px; /* Adjust height as needed */
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #888;
+            border: 1px dashed #ccc;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body class="antialiased">
+    <!-- Main Infographic Container -->
     <div class="container py-8">
 
+        <!-- Header Section: Title and Overview -->
         <header class="text-center mb-12">
             <h1 class="text-5xl font-extrabold text-primary-blue mb-4">
                 생성형 AI 윤리의식 및 교육 필요성 실태 조사 보고서
@@ -144,6 +165,7 @@
         </header>
 
         <main>
+            <!-- Section 1: 조사 동기와 목적 (Motivation and Purpose) -->
             <section class="card">
                 <h2 class="section-title">1. 조사 동기와 목적</h2>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -162,6 +184,7 @@
                 </div>
             </section>
 
+            <!-- Section 2: 조사 계획 (Research Plan) -->
             <section class="card">
                 <h2 class="section-title">2. 조사 계획</h2>
                 <div class="mb-6">
@@ -196,6 +219,7 @@
                 </div>
             </section>
 
+            <!-- Section 3: 조사 결과 (Research Results) -->
             <section class="card">
                 <h2 class="section-title">3. 조사 결과</h2>
                 <div class="mb-8">
@@ -208,6 +232,7 @@
 
                 <h3 class="subsection-title">설문조사 상세 결과</h3>
 
+                <!-- HTML Comment: Chart for Survey Question 1 - Ethical Concern about using AI content without own effort -->
                 <div class="mb-8 p-6 bg-supporting-light-blue rounded-lg">
                     <h4 class="text-xl font-semibold text-primary-blue mb-4">
                         설문 문항 1: AI 생성 내용 무단 사용에 대한 윤리적 고민 여부
@@ -223,6 +248,7 @@
                     </p>
                 </div>
 
+                <!-- HTML Comment: Chart for Survey Question 2 - Verifying AI information -->
                 <div class="mb-8 p-6 bg-supporting-light-blue rounded-lg">
                     <h4 class="text-xl font-semibold text-primary-blue mb-4">
                         설문 문항 2: AI 정보의 사실 여부 확인 여부
@@ -238,6 +264,7 @@
                     </p>
                 </div>
 
+                <!-- HTML Comment: Chart for Survey Question 3 - Most concerning ethical issues (multiple choice) -->
                 <div class="mb-8 p-6 bg-supporting-light-blue rounded-lg">
                     <h4 class="text-xl font-semibold text-primary-blue mb-4">
                         설문 문항 3: 생성형 AI 사용 시 가장 고민해 본 윤리적 문제 (다수 선택)
@@ -257,14 +284,30 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-sm border border-accent-grey">
                         <h4 class="text-xl font-semibold text-secondary-teal mb-3">문연경 학생</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <!-- HTML Comment: Image for Moon Yeon-kyung's interview section -->
+                        <div class="image-placeholder">
+                            <img src="https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (문연경+학생)" alt="문연경 학생 인터뷰 이미지 (로컬 경로 불가)"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (문연경+학생)';">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            * 로컬 파일 경로는 웹 페이지에 삽입할 수 없습니다. 웹에 업로드된 이미지의 URL을 제공해 주세요.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
                             <li>생성형 AI의 윤리적 사용을 위해 도덕성과 책임감을 갖춘 윤리 교육의 필요성을 강조했다.</li>
                             <li>타인의 AI 사용 방식을 통해 윤리적 문제를 인식하고 이를 개선하려는 태도의 중요성을 언급했다.</li>
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-sm border border-accent-grey">
                         <h4 class="text-xl font-semibold text-secondary-teal mb-3">최예린 학생</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <!-- HTML Comment: Image for Choi Yerin's interview section -->
+                        <div class="image-placeholder">
+                            <img src="https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (최예린+학생)" alt="최예린 학생 인터뷰 이미지 (로컬 경로 불가)"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (최예린+학생)';">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            * 로컬 파일 경로는 웹 페이지에 삽입할 수 없습니다. 웹에 업로드된 이미지의 URL을 제공해 주세요.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
                             <li>AI에 과도하게 의존할 경우 자기 능력에 대한 왜곡이 발생할 수 있다는 점을 지적했다.</li>
                             <li>AI의 정보를 맹신하지 않고, 잘못된 정보 및 정보 매칭 오류의 사례를 바탕으로 한 교육의 필요성을 강조했다.</li>
                             <li>AI 사용 전반에 걸쳐 자기 점검과 자율적 통제도 중요하다고 말했다.</li>
@@ -273,6 +316,7 @@
                 </div>
             </section>
 
+            <!-- Section 4: 결론 및 제언 (Conclusion and Recommendations) -->
             <section class="card">
                 <h2 class="section-title">4. 결론 및 제언</h2>
                 <div class="mb-8">
@@ -307,6 +351,7 @@
             </section>
         </main>
 
+        <!-- Section 5: 참고자료 (References - Placeholder as no specific references were provided) -->
         <section class="card">
             <h2 class="section-title">5. 참고자료</h2>
             <p class="text-gray-700">
@@ -314,11 +359,13 @@
             </p>
         </section>
 
+        <!-- Section 6: 푸터 (Footer) -->
         <footer class="text-center text-gray-500 text-sm mt-12">
             <p>&copy; 2025 미림마이스터고등학교 1학년 6반 2조. 모든 권리 보유.</p>
         </footer>
     </div>
 
+    <!-- HTML Comment: This script block contains all JavaScript logic for Chart.js initialization and data processing. -->
     <script>
         // Register the datalabels plugin globally
         Chart.register(ChartDataLabels);
@@ -559,3 +606,5 @@
       모든 내용은 단일 HTML 파일 내에 포함되어 있으며, 외부 리소스 링크는 사용하지 않았습니다.
       차트는 Chart.js 라이브러리를 활용하였고, 그 외의 시각화는 순수 HTML/CSS로 구현했습니다.
     -->
+</body>
+</html>
