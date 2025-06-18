@@ -1,5 +1,4 @@
-
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <!--
   This HTML file contains a single-file infographic summarizing a student research report on the ethical awareness and educational needs regarding generative AI among 1st-year students at Mirim Meister High School.
   It includes all CSS and JavaScript directly within the file, without external links.
@@ -286,7 +285,7 @@
                         <h4 class="text-xl font-semibold text-secondary-teal mb-3">문연경 학생</h4>
                         <!-- HTML Comment: Image for Moon Yeon-kyung's interview section -->
                         <div class="image-placeholder">
-                            <img src="src/스크린샷 2025-06-09 133845.png이미지+불가 (문연경+학생)" alt="문연경 학생 인터뷰 이미지 (로컬 경로 불가)"
+                            <img src="https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (문연경+학생)" alt="문연경 학생 인터뷰 이미지 (로컬 경로 불가)"
                                  onerror="this.onerror=null; this.src='https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (문연경+학생)';">
                         </div>
                         <p class="text-xs text-gray-500 mt-2">
@@ -301,7 +300,7 @@
                         <h4 class="text-xl font-semibold text-secondary-teal mb-3">최예린 학생</h4>
                         <!-- HTML Comment: Image for Choi Yerin's interview section -->
                         <div class="image-placeholder">
-                            <img src=src/스크린샷 2025-06-09 133852.png이미지+불가 (최예린+학생)" alt="최예린 학생 인터뷰 이미지 (로컬 경로 불가)"
+                            <img src="https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (최예린+학생)" alt="최예린 학생 인터뷰 이미지 (로컬 경로 불가)"
                                  onerror="this.onerror=null; this.src='https://placehold.co/300x200/A9A9A9/FFFFFF?text=이미지+불가 (최예린+학생)';">
                         </div>
                         <p class="text-xs text-gray-500 mt-2">
@@ -367,237 +366,268 @@
 
     <!-- HTML Comment: This script block contains all JavaScript logic for Chart.js initialization and data processing. -->
     <script>
-        // Register the datalabels plugin globally
-        Chart.register(ChartDataLabels);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Register the datalabels plugin globally
+            Chart.register(ChartDataLabels);
 
-        // Function to wrap labels for Chart.js
-        function wrapLabel(label, maxLen = 16) {
-            if (typeof label !== 'string') {
-                return label;
-            }
-            const words = label.split(' ');
-            let lines = [];
-            let currentLine = '';
-
-            words.forEach(word => {
-                if ((currentLine + word).length > maxLen && currentLine !== '') {
-                    lines.push(currentLine.trim());
-                    currentLine = word + ' ';
-                } else {
-                    currentLine += word + ' ';
+            // Function to wrap labels for Chart.js
+            function wrapLabel(label, maxLen = 16) {
+                if (typeof label !== 'string') {
+                    return label;
                 }
-            });
-            lines.push(currentLine.trim());
-            return lines;
-        }
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
 
-        // Data for Chart.js charts
-        const surveyData = {
-            q1: {
-                labels: ['매우 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
-                counts: [1, 1, 0, 10, 5],
-                percentages: [5.9, 5.9, 0, 58.8, 29.4]
-            },
-            q2: {
-                // Assuming the last '그렇지 않다' (35.3%) is '매우 그렇다' based on typical survey scales and context.
-                labels: ['매우 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
-                counts: [2, 3, 5, 1, 6],
-                percentages: [11.8, 17.6, 29.4, 5.9, 35.3]
-            },
-            q3: {
-                labels: [
-                    'AI가 만든 내용이 출처 문제',
-                    'AI가 타인의 저작물을 베끼는 것 같은 표절 문제',
-                    'AI가 잘못된 정보나 편향된 내용을 만들 수 있다는 문제',
-                    '너무 쉽게 아이디어를 생각하거나 그림을 그림'
-                ],
-                counts: [6, 6, 9, 1],
-                percentages: [35.3, 35.3, 52.9, 5.9] // Note: percentages are based on total respondents (17), not sum of choices (22)
+                words.forEach(word => {
+                    if ((currentLine + word).length > maxLen && currentLine !== '') {
+                        lines.push(currentLine.trim());
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine += word + ' ';
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
             }
-        };
 
-        // Common Chart.js options
-        const commonChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        font: {
+            // Data for Chart.js charts
+            const surveyData = {
+                q1: {
+                    labels: ['매우 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
+                    counts: [1, 1, 0, 10, 5],
+                    percentages: [5.9, 5.9, 0, 58.8, 29.4]
+                },
+                q2: {
+                    labels: ['매우 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
+                    counts: [2, 3, 5, 1, 6],
+                    percentages: [11.8, 17.6, 29.4, 5.9, 35.3]
+                },
+                q3: {
+                    labels: [
+                        'AI가 만든 내용이 출처 문제',
+                        'AI가 타인의 저작물을 베끼는 것 같은 표절 문제',
+                        'AI가 잘못된 정보나 편향된 내용을 만들 수 있다는 문제',
+                        '너무 쉽게 아이디어를 생각하거나 그림을 그림'
+                    ],
+                    counts: [6, 6, 9, 1],
+                    percentages: [35.3, 35.3, 52.9, 5.9]
+                }
+            };
+
+            // Common Chart.js options
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 14,
+                                family: 'Noto Sans KR'
+                            },
+                            generateLabels: function(chart) {
+                                const originalLabels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                                return originalLabels.map(label => {
+                                    // Ensure the label text is a string before wrapping
+                                    return {
+                                        ...label,
+                                        text: typeof label.text === 'string' ? wrapLabel(label.text).join('\n') : label.text
+                                    };
+                                });
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                // For pie charts, context[0].label is the slice label
+                                // For bar charts, context[0].label is the X-axis label
+                                return wrapLabel(context[0].label).join('\n');
+                            },
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '명';
+                                }
+                                if (context.dataset.percentages && context.dataIndex !== undefined) {
+                                    label += ` (${context.dataset.percentages[context.dataIndex]}%)`;
+                                }
+                                return label;
+                            }
+                        },
+                        bodyFont: {
                             size: 14,
                             family: 'Noto Sans KR'
                         },
-                        // Wrap legend labels
-                        generateLabels: function(chart) {
-                            const originalLabels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                            return originalLabels.map(label => {
-                                return {
-                                    ...label,
-                                    text: wrapLabel(label.text).join('\n')
-                                };
-                            });
-                        }
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed !== null) {
-                                label += context.parsed + '명';
-                            }
-                            if (context.dataset.percentages && context.dataIndex !== undefined) {
-                                label += ` (${context.dataset.percentages[context.dataIndex]}%)`;
-                            }
-                            return label;
-                        },
-                        title: function(context) {
-                            // Wrap tooltip title for Q3 bar chart
-                            if (context[0].dataset.label === '응답수') {
-                                return wrapLabel(context[0].label).join('\n');
-                            }
-                            return context[0].label;
+                        titleFont: {
+                            size: 14,
+                            family: 'Noto Sans KR'
                         }
                     },
-                    bodyFont: {
-                        size: 14,
-                        family: 'Noto Sans KR'
-                    },
-                    titleFont: {
-                        size: 14,
-                        family: 'Noto Sans KR'
-                    }
-                },
-                datalabels: {
-                    formatter: (value, ctx) => {
-                        const percentage = ctx.dataset.percentages[ctx.dataIndex];
-                        return percentage > 0 ? `${percentage}%` : ''; // Only show if percentage > 0
-                    },
-                    color: '#fff',
-                    font: {
-                        weight: 'bold',
-                        size: 14,
-                        family: 'Noto Sans KR'
-                    },
-                    textShadowBlur: 4,
-                    textShadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        };
-
-        // Chart colors
-        const chartColors = [
-            '#2A62B6', '#4ECDC4', '#A9A9A9', '#E0F2FE', '#263238',
-            '#6A5ACD', '#FFD700', '#FF6347', '#3CB371', '#87CEEB'
-        ];
-
-        // Initialize Chart 1: Survey Q1 - Ethical Concern (Pie Chart)
-        const ctx1 = document.getElementById('surveyQ1Chart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'pie',
-            data: {
-                labels: surveyData.q1.labels.map(label => wrapLabel(label)),
-                datasets: [{
-                    data: surveyData.q1.counts,
-                    backgroundColor: chartColors.slice(0, surveyData.q1.labels.length),
-                    percentages: surveyData.q1.percentages,
-                    borderWidth: 1,
-                    borderColor: '#FFFFFF'
-                }]
-            },
-            options: {
-                ...commonChartOptions
-            }
-        });
-
-        // Initialize Chart 2: Survey Q2 - Verifying AI Info (Pie Chart)
-        const ctx2 = document.getElementById('surveyQ2Chart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'pie',
-            data: {
-                labels: surveyData.q2.labels.map(label => wrapLabel(label)),
-                datasets: [{
-                    data: surveyData.q2.counts,
-                    backgroundColor: chartColors.slice(0, surveyData.q2.labels.length),
-                    percentages: surveyData.q2.percentages,
-                    borderWidth: 1,
-                    borderColor: '#FFFFFF'
-                }]
-            },
-            options: {
-                ...commonChartOptions
-            }
-        });
-
-        // Initialize Chart 3: Survey Q3 - Most Concerning Ethical Issues (Bar Chart)
-        const ctx3 = document.getElementById('surveyQ3Chart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'bar',
-            data: {
-                labels: surveyData.q3.labels.map(label => wrapLabel(label)),
-                datasets: [{
-                    label: '응답수',
-                    data: surveyData.q3.counts,
-                    backgroundColor: chartColors[0], // Primary Blue for bars
-                    borderColor: chartColors[0],
-                    borderWidth: 1,
-                    percentages: surveyData.q3.percentages
-                }]
-            },
-            options: {
-                ...commonChartOptions,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: '응답수 (명)',
-                            font: {
-                                size: 16,
-                                family: 'Noto Sans KR'
-                            },
-                            color: '#263238'
-                        },
-                        ticks: {
-                            font: {
-                                size: 12,
-                                family: 'Noto Sans KR'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: {
-                                size: 12,
-                                family: 'Noto Sans KR'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    ...commonChartOptions.plugins,
                     datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        offset: 4,
                         formatter: (value, ctx) => {
                             const percentage = ctx.dataset.percentages[ctx.dataIndex];
-                            return `${value}명 (${percentage}%)`;
+                            return percentage > 0 ? `${percentage}%` : '';
                         },
-                        color: '#263238', // Dark text for datalabels on bars
+                        color: '#fff',
                         font: {
                             weight: 'bold',
-                            size: 12,
+                            size: 14,
                             family: 'Noto Sans KR'
                         },
-                        textShadowBlur: 0, // No shadow for bar labels
-                        textShadowColor: 'transparent'
+                        textShadowBlur: 4,
+                        textShadowColor: 'rgba(0, 0, 0, 0.5)'
                     }
                 }
+            };
+
+            // Chart colors (New, more vibrant palette)
+            const chartColors = [
+                '#FF6384', // Vibrant Red
+                '#36A2EB', // Bright Blue
+                '#FFCE56', // Vibrant Yellow
+                '#4BC0C0', // Bright Teal
+                '#9966FF', // Vibrant Purple
+                '#FF9F40', // Bright Orange
+                '#2ECC71', // Vibrant Green
+                '#E74C3C', // Strong Red
+                '#3498DB', // Medium Blue
+                '#F1C40F'  // Gold
+            ];
+
+            // Initialize Chart 1: Survey Q1 - Ethical Concern (Pie Chart)
+            try {
+                const ctx1 = document.getElementById('surveyQ1Chart');
+                if (ctx1) {
+                    new Chart(ctx1.getContext('2d'), {
+                        type: 'pie',
+                        data: {
+                            labels: surveyData.q1.labels,
+                            datasets: [{
+                                data: surveyData.q1.counts,
+                                backgroundColor: chartColors.slice(0, surveyData.q1.labels.length),
+                                percentages: surveyData.q1.percentages,
+                                borderWidth: 1,
+                                borderColor: '#FFFFFF'
+                            }]
+                        },
+                        options: {
+                            ...commonChartOptions
+                        }
+                    });
+                } else {
+                    console.error("Canvas element 'surveyQ1Chart' not found.");
+                }
+            } catch (error) {
+                console.error("Error initializing surveyQ1Chart:", error);
+            }
+
+
+            // Initialize Chart 2: Survey Q2 - Verifying AI Info (Pie Chart)
+            try {
+                const ctx2 = document.getElementById('surveyQ2Chart');
+                if (ctx2) {
+                    new Chart(ctx2.getContext('2d'), {
+                        type: 'pie',
+                        data: {
+                            labels: surveyData.q2.labels,
+                            datasets: [{
+                                data: surveyData.q2.counts,
+                                backgroundColor: chartColors.slice(0, surveyData.q2.labels.length),
+                                percentages: surveyData.q2.percentages,
+                                borderWidth: 1,
+                                borderColor: '#FFFFFF'
+                            }]
+                        },
+                        options: {
+                            ...commonChartOptions
+                        }
+                    });
+                } else {
+                    console.error("Canvas element 'surveyQ2Chart' not found.");
+                }
+            } catch (error) {
+                console.error("Error initializing surveyQ2Chart:", error);
+            }
+
+            // Initialize Chart 3: Survey Q3 - Most Concerning Ethical Issues (Bar Chart)
+            try {
+                const ctx3 = document.getElementById('surveyQ3Chart');
+                if (ctx3) {
+                    new Chart(ctx3.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: surveyData.q3.labels,
+                            datasets: [{
+                                label: '응답수',
+                                data: surveyData.q3.counts,
+                                backgroundColor: chartColors.slice(0, surveyData.q3.labels.length), // Modified: Use multiple colors
+                                borderColor: chartColors.slice(0, surveyData.q3.labels.length), // Modified: Use multiple colors
+                                borderWidth: 1,
+                                percentages: surveyData.q3.percentages
+                            }]
+                        },
+                        options: {
+                            ...commonChartOptions,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: '응답수 (명)',
+                                        font: {
+                                            size: 16,
+                                            family: 'Noto Sans KR'
+                                        },
+                                        color: '#263238'
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 12,
+                                            family: 'Noto Sans KR'
+                                        }
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        font: {
+                                            size: 12,
+                                            family: 'Noto Sans KR'
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: {
+                                ...commonChartOptions.plugins,
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'top',
+                                    formatter: (value, ctx) => {
+                                        const percentage = ctx.dataset.percentages[ctx.dataIndex];
+                                        return `${value}명 (${percentage}%)`;
+                                    },
+                                    color: '#263238', // Dark text for datalabels on bars
+                                    font: {
+                                        weight: 'bold',
+                                        size: 12,
+                                        family: 'Noto Sans KR'
+                                    },
+                                    textShadowBlur: 0, // No shadow for bar labels
+                                    textShadowColor: 'transparent'
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    console.error("Canvas element 'surveyQ3Chart' not found.");
+                }
+            } catch (error) {
+                console.error("Error initializing surveyQ3Chart:", error);
             }
         });
     </script>
